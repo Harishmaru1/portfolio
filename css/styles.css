@@ -1,0 +1,161 @@
+body {
+  background: #fae3d9;
+  margin: 0;
+  text-align: center;
+  font-family: 'Lora', serif;
+  color: #393e46;
+}
+
+h1{
+  color: #61c0bf;
+  margin: 50px auto 0 auto;
+  font-family: 'Megrim', cursive;
+  font-size: 3.75rem; /*for dynamic sizing: 100% or 1em is equivalent to 16px or rem (root em) meaning ignore parents sizing*/
+}
+
+h2 {
+  color: #61c0bf;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  /* line-height: 2; */
+}
+
+h3 {
+  color: #54A6A6;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+hr {
+  border-color: #bbded6;
+  border-style: dotted none none none;
+  border-width: thick;
+  width: 5%;
+  margin: 0 auto;
+}
+
+a {
+  color: #54A6A6;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: lighter;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #214040;
+  text-decoration: none;
+}
+
+/* HEADER DESIGN */
+.top-container {
+  position: relative;
+  padding-top: 100px;
+  background-color: #bbded6;
+}
+
+.top-cloud {
+  position: absolute;
+  top: 100px;
+  right: 350px;
+}
+
+.bottom-cloud {
+  position: absolute;
+  left: 300px;
+
+}
+
+/* MID CONTAINER */
+
+.middle-container {
+  padding: 20px;
+}
+
+/* PROFILE */
+.profile-photo {
+  border-radius: 50%;
+  width: 100px;
+}
+
+.profile {
+  line-height: 2;
+  width: 30%;
+  margin: 50px auto 100px;
+
+}
+
+/* SKILLS */
+.skills {
+  margin: 100px auto;
+}
+
+.skill-row {
+  width: 50%;
+  margin: 50px auto 100px;
+  text-align: left;
+  line-height: 2;
+}
+
+.icons {
+  width: 15%;
+}
+
+.design {
+  float: left;
+  margin-right: 30px;
+}
+
+.web {
+  float: right; /*float is for wrapping text around element - don't misuse it*/
+  margin-left: 30px;
+}
+
+.research{
+  float: left;
+  margin-right: 30px;
+}
+
+/*CONTACT ME*/
+.contact-me {
+  width: 35%;
+  margin: 100px auto;
+  line-height: 2;
+}
+
+.btn {
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 20px;
+  background: #61c0bf;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  position: relative;
+  top: 10px;
+}
+
+.btn:hover {
+  background: #bbded6;
+  text-decoration: none;
+}
+
+/* FOOTER */
+.bottom-container {
+  background-color: #61c0bf;
+  margin: 0;
+  padding: 25px;
+  line-height: 2;
+}
+
+.footer-link {
+  color: #bbded6;
+  text-decoration: none;
+  padding: 20px;
+}
+
+#copyright {
+  color: #fefefe;
+  font-size: 0.75rem;
+}
