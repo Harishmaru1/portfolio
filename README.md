@@ -7,7 +7,49 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://Github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
 - [@vitejs/plugin-react-swc](https://Github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## React Compiler# Harish Maru Portfolio 🚀
+
+A modern and responsive developer portfolio built using **React**, **Vite**, **Tailwind CSS**, and **JavaScript**.  
+This portfolio showcases my projects, skills, experience, and contact information with smooth animations and a clean UI.
+
+---
+
+## 🌐 Live Demo
+
+👉 **Click Here:**  
+[https://harish-maru.netlify.app/](https://harish-maru.netlify.app/)
+
+---
+
+## 🛠️ Tech Stack
+
+- React.js
+- Vite
+- JavaScript
+- Tailwind CSS
+- EmailJS
+- Lucide React
+
+---
+
+## ✨ Features
+
+- Responsive Design
+- Smooth Scrolling
+- Animated UI
+- Project Showcase
+- Contact Form with EmailJS
+- Resume Download Option
+- Modern Glassmorphism Design
+
+---
+
+## 📂 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/harishmaru1/portfolio.git
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
