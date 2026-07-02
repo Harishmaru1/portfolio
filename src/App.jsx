@@ -9,7 +9,7 @@ import {Footer} from "@/layout/Footer";
 
 function App(){
     return(
-        <div className= "min-h-screen overflow-x-hidden">
+        <div className="min-h-screen w-full">
         <Navbar/>
         <main>
             <Hero/>

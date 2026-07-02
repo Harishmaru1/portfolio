@@ -9,31 +9,31 @@ const navLinks = [
   { href: "#experience", label: "Experience" },
   { href: "#testimonials", label: "Testimonials" },
 ];
-const handleScroll = (id) => {
-  const section = document.querySelector(id);
-
-  if (section) {
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-
-  setIsMobileMenuOpen(false);
-};
-
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const handleScroll = (id) => {
+    const section = document.querySelector(id);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
+    setIsMobileMenuOpen(false);
+  };
+
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScrollEvent = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollEvent);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScrollEvent);
   }, []);
 
   return (

@@ -2,7 +2,6 @@ import { FaInstagramSquare } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
 
 import { FaLinkedin } from "react-icons/fa";
-import { Heart } from "lucide-react";
 
 
 const socialLinks = [
@@ -100,9 +99,17 @@ export const Footer = () => {
             © {currentYear} Harish Maru. All rights reserved.
           </p>
 
-          <p className="text-sm text-muted-foreground flex items-center gap-2">
-            Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by
-            Harish Maru
+          <p className="text-sm text-muted-foreground tracking-wide">
+            Made by{" "}
+            <a
+              href="https://github.com/harishmaru1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-foreground hover:text-primary transition-colors duration-300 relative group inline-block"
+            >
+              Harish Maru
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
+            </a>
           </p>
         </div>
       </div>
