@@ -105,7 +105,12 @@ export const Projects = () => {
 
               {/* Content */}
               <div className="p-6 space-y-4">
-                <div className="flex items-start justify-between">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start justify-between cursor-pointer"
+                >
                   <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
@@ -115,7 +120,7 @@ export const Projects = () => {
                    group-hover:translate-x-1 
                    group-hover:-translate-y-1 transition-all"
                   />
-                </div>
+                </a>
                 <p className="text-muted-foreground text-sm">
                   {project.description}
                 </p>
