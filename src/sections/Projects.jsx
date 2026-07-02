@@ -11,12 +11,12 @@ const projects = [
     Github: "#",
   },
   {
-    title: "Thisismagma.com",
+    title: "Alaukik Tours And Travels",
     description:
-      "Recreated the Magma Design Agency website using HTML, CSS, JavaScript, and DOM manipulation, focusing on responsive design and engaging user interfaces.",
+      "Developed a full-stack Vehicle Rental and Tour Packages web application using React.js, PHP, and MySQL. Implemented secure authentication, vehicle rental management, tour package listings, booking inquiry forms, REST APIs, and a responsive user interface to deliver a seamless travel and rental experience.",
     image: "/projects/project2.png",
     tags: ["React.js", "Tailwind"],
-    link: "https://harishmaru1.github.io/Project-1/",
+    link: "https://tours-and-travels.alaukikitechsolution.in/",
     Github: "#",
   },
   // {
