@@ -16,7 +16,7 @@ const projects = [
       "Developed a full-stack Vehicle Rental and Tour Packages web application using React.js, PHP, and MySQL. Implemented secure authentication, vehicle rental management, tour package listings, booking inquiry forms, REST APIs, and a responsive user interface to deliver a seamless travel and rental experience.",
     image: "/projects/project2.png",
     tags: ["React.js", "Tailwind"],
-    link: "https://tours-and-travels.alaukikitechsolution.in/",
+    link: "https://one-to-one.alaukikitechsolution.in/",
     Github: "#",
   },
   // {
