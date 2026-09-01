@@ -27,7 +27,6 @@ const footerLinks = [
   { path: "/projects", label: "Projects" },
   { path: "#experience", label: "Experience" },
   { path: "#testimonials", label: "Testimonials" },
-  { path: "/contact", label: "Contact" },
 ];
 
 export const Footer = () => {
