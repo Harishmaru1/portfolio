@@ -1,8 +1,8 @@
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
-
 import { FaLinkedin } from "react-icons/fa";
-
+import { ArrowRight, Eye } from "lucide-react";
+import { useNavigation } from "@/context/NavigationContext";
 
 const socialLinks = [
   {
@@ -23,60 +23,62 @@ const socialLinks = [
 ];
 
 const footerLinks = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#contact", label: "Contact" },
+  { path: "/about", label: "About" },
+  { path: "/projects", label: "Projects" },
+  { path: "#experience", label: "Experience" },
+  { path: "#testimonials", label: "Testimonials" },
+  { path: "/contact", label: "Contact" },
 ];
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { navigate } = useNavigation();
 
   return (
-    <footer className="relative border-t border-border/50 py-10 overflow-hidden">
-      
-      {/* Background Glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-1/4 top-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute right-1/4 bottom-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+    <footer className="relative border-t border-border/50 py-10 md:py-14 overflow-hidden bg-background/80">
+      {/* Background Glows */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute left-1/4 top-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute right-1/4 bottom-0 w-80 h-80 bg-highlight/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Top Section */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          
-          {/* Logo */}
-          <div className="text-center md:text-left">
-            <a
-              href="#"
-              className="text-2xl font-bold tracking-tight hover:text-primary transition-colors"
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+          {/* Logo & Bio */}
+          <div className="text-center md:text-left max-w-sm">
+            <button
+              onClick={() => navigate("/")}
+              className="flex items-center text-2xl font-extrabold tracking-tight cursor-pointer group inline-block"
             >
-              HM<span className="text-primary">.</span>
-            </a>
-
-            <p className="text-sm text-muted-foreground mt-3 max-w-sm">
+              <span className="text-foreground transition-colors group-hover:text-white">
+                Harish
+              </span>
+              <span className="text-primary glow-text font-mono font-bold text-xl transition-all group-hover:translate-x-0.5">
+                .tech
+              </span>
+            </button>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
               Full Stack Developer passionate about creating modern,
-              scalable and user-friendly web experiences.
+              scalable, and high-performance web experiences.
             </p>
           </div>
 
-          {/* Navigation Links */}
-          <nav className="flex flex-wrap justify-center gap-6">
+          {/* Navigation Links (Single Straight Line) */}
+          <nav className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 whitespace-nowrap">
             {footerLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+              <button
+                key={link.label}
+                onClick={() => navigate(link.path)}
+                className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </nav>
 
           {/* Social Icons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
@@ -84,33 +86,40 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-110"
+                className="p-2.5 rounded-full glass hover:bg-primary/15 hover:text-primary transition-all duration-300 hover:scale-110 active:scale-95"
               >
-                <social.icon className="w-5 h-5" />
+                <social.icon className="w-4 h-4" />
               </a>
             ))}
           </div>
         </div>
 
-        {/* Bottom Line */}
-        <div className="mt-10 pt-6 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-4">
-          
-          <p className="text-sm text-muted-foreground text-center md:text-left">
+        {/* Bottom Line with Copyright & Action Buttons */}
+        <div className="mt-8 pt-6 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground text-center sm:text-left">
             © {currentYear} Harish Maru. All rights reserved.
           </p>
 
-          <p className="text-sm text-muted-foreground tracking-wide">
-            Made by{" "}
-            <a
-              href="https://github.com/harishmaru1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-foreground hover:text-primary transition-colors duration-300 relative group inline-block"
+          {/* Compact Symmetric Action Buttons */}
+          <div className="flex items-center gap-2.5">
+            {/* View Projects Button */}
+            <button
+              onClick={() => navigate("/projects")}
+              className="px-3.5 py-1.5 rounded-full glass border border-border/70 hover:border-primary/40 hover:text-primary text-xs font-medium transition-all duration-300 flex items-center gap-1.5 cursor-pointer active:scale-95"
             >
-              Harish Maru
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
-            </a>
-          </p>
+              <Eye className="w-3.5 h-3.5" />
+              <span>View Projects</span>
+            </button>
+
+            {/* Let's Connect Button */}
+            <button
+              onClick={() => navigate("/contact")}
+              className="px-3.5 py-1.5 rounded-full bg-primary text-primary-foreground font-medium text-xs shadow-[0_0_15px_rgba(32,178,166,0.35)] hover:shadow-[0_0_25px_rgba(32,178,166,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-1.5 cursor-pointer group"
+            >
+              <span>Let's Connect</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+          </div>
         </div>
       </div>
     </footer>

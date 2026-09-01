@@ -1,5 +1,6 @@
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, User } from "lucide-react";
 import { useState } from "react";
+import { TiltCard } from "@/components/TiltCard";
 
 const testimonials = [
   {
@@ -7,32 +8,24 @@ const testimonials = [
       "Harish is one of the most talented engineers I've worked with. His attention to detail and ability to translate complex requirements into elegant solutions is remarkable.",
     author: "Bhumika Barethiya",
     role: "Project Manager, Alaukik ITech Solution.",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
   },
   {
     quote:
       "Working with Harish was a game-changer for our project. He delivered ahead of schedule with code quality that set a new standard for our team.",
-    author: "Anil sharma",
+    author: "Anil Sharma",
     role: "Product Manager, Digital Solutions",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
   },
   {
     quote:
       "Harish's expertise in React and TypeScript helped us rebuild our entire frontend in record time. His architectural decisions continue to pay dividends.",
     author: "Priya Desai",
     role: "Engineering Lead, Sd Bansal",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
   },
   {
     quote:
       "Not only is Harish technically brilliant, but he's also a fantastic communicator and team player. He elevated everyone around him.",
     author: "Riddesh Kale",
     role: "CEO, Dailymatch.in",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
   },
 ];
 
@@ -49,7 +42,7 @@ export const Testimonials = () => {
     );
   };
   return (
-    <section id="testimonials" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="testimonials" className="py-16 md:py-24 relative overflow-hidden">
       <div
         className="absolute top-1/2 left-1/2
        w-[800px] h-[800px] bg-primary/5
@@ -57,7 +50,7 @@ export const Testimonials = () => {
       />
       <div
         className="container mx-auto 
-      px-6 relative z-10"
+      px-4 sm:px-6 relative z-10"
       >
         {/* Section Header */}
         <div
@@ -90,8 +83,12 @@ export const Testimonials = () => {
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Main Testimonial */}
-            <div className="glass p-8 rounded-3xl md:p-12 glow-border animate-fade-in animation-delay-200">
-              <div className="absolute -top-4 left-8 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+            <TiltCard
+              maxTilt={8}
+              scale={1.01}
+              className="group glass p-8 rounded-3xl md:p-12 glow-border animate-fade-in animation-delay-200 border border-primary/30"
+            >
+              <div className="absolute -top-4 left-8 w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-lg">
                 <Quote className="w-6 h-6 text-primary-foreground" />
               </div>
 
@@ -100,21 +97,20 @@ export const Testimonials = () => {
               </blockquote>
 
               <div className="flex items-center gap-4">
-                <img
-                  src={testimonials[activeIdx].avatar}
-                  alt={testimonials[activeIdx].author}
-                  className="w-14 h-14 rounded-full object-cover ring-2 ring-primary/20"
-                />
+                {/* Modern User Icon Avatar */}
+                <div className="w-13 h-13 rounded-full bg-gradient-to-br from-primary/25 via-primary/10 to-surface border border-primary/40 flex items-center justify-center shadow-lg ring-2 ring-primary/20 flex-shrink-0">
+                  <User className="w-6 h-6 text-primary" />
+                </div>
                 <div>
-                  <div className="font-semibold">
+                  <div className="font-semibold text-foreground text-base sm:text-lg">
                     {testimonials[activeIdx].author}
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-xs sm:text-sm text-muted-foreground">
                     {testimonials[activeIdx].role}
                   </div>
                 </div>
               </div>
-            </div>
+            </TiltCard>
 
             {/* Testimonials Navigation */}
             <div className="flex items-center justify-center gap-4 mt-8">
@@ -129,11 +125,10 @@ export const Testimonials = () => {
                 {testimonials.map((_, idx) => (
                   <button
                     onClick={() => setActiveIdx(idx)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      idx === activeIdx
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === activeIdx
                         ? "w-8 bg-primary"
                         : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    }`}
+                      }`}
                   />
                 ))}
               </div>

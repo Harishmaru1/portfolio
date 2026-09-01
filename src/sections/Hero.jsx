@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/Button";
 import {
   ArrowRight,
@@ -9,6 +10,13 @@ import { FaSquareGithub } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
+
+const typingRoles = [
+  "Full Stack Developer",
+  "React & Next.js Specialist",
+  "MERN Stack Engineer",
+  "SaaS & API Architect",
+];
 
 const skills = [
   "React",
@@ -29,7 +37,47 @@ const skills = [
   "Github Actions",
 ];
 
+const floatingDots = Array.from({ length: 38 }, (_, i) => ({
+  id: i,
+  left: `${((i * 17 + 3) % 96) + 1}%`,
+  top: `${((i * 23 + 5) % 92) + 2}%`,
+  size: i % 4 === 0 ? "w-2 h-2" : i % 2 === 0 ? "w-1.5 h-1.5" : "w-1 h-1",
+  duration: `${12 + (i % 6) * 2}s`,
+  delay: `${(i % 8) * 1}s`,
+  opacity: i % 3 === 0 ? "opacity-55" : "opacity-35",
+}));
+
 export const Hero = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [displayText, setDisplayText] = useState("");
+
+  useEffect(() => {
+    const currentFullRole = typingRoles[roleIndex];
+    const typingSpeed = isDeleting ? 35 : 75;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        setDisplayText(currentFullRole.substring(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+
+        if (charIndex + 1 === currentFullRole.length) {
+          setTimeout(() => setIsDeleting(true), 1800);
+        }
+      } else {
+        setDisplayText(currentFullRole.substring(0, charIndex - 1));
+        setCharIndex((prev) => prev - 1);
+
+        if (charIndex - 1 <= 0) {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % typingRoles.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, roleIndex]);
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Bg */}
@@ -42,19 +90,17 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/80 to-background" />
       </div>
 
-      {/* Green Dots */}
+      {/* Green Floating Particles (Gentle Slow Motion) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {floatingDots.map((dot) => (
           <div
-            className="absolute w-1.5 h-1.5 rounded-full opacity-60"
+            key={dot.id}
+            className={`absolute ${dot.size} rounded-full bg-[#20B2A6] ${dot.opacity} blur-[0.5px]`}
             style={{
-              backgroundColor: "#20B2A6",
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `slow-drift ${
-                15 + Math.random() * 20
-              }s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
+              left: dot.left,
+              top: dot.top,
+              animation: `slow-drift ${dot.duration} ease-in-out infinite`,
+              animationDelay: dot.delay,
             }}
           />
         ))}
@@ -64,67 +110,86 @@ export const Hero = () => {
       <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-8">
-            <div className="animate-fade-in">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Software Engineer • React Specialist
-              </span>
-            </div>
-
-            {/* Headline */}
+          <div className="space-y-6 sm:space-y-7">
+            {/* Greeting & Main Big Name Headline */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Crafting <span className="text-primary glow-text">digital</span>
-                <br />
-                experiences with
-                <br />
-                <span className="font-serif italic font-normal text-white">
-                  precision.
+              <div className="inline-flex items-center gap-2 font-mono text-xs sm:text-sm text-primary tracking-[0.2em] uppercase font-semibold animate-fade-in animation-delay-100">
+                <span className="text-primary/60">//</span>
+                <span>HELLO WORLD, I AM</span>
+              </div>
+
+              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.08] animate-fade-in animation-delay-100">
+                <span className="text-foreground">Harish</span>{" "}
+                <span className="bg-gradient-to-r from-primary via-[#45ecd9] to-primary bg-clip-text text-transparent glow-text font-extrabold">
+                  Maru
                 </span>
               </h1>
-              <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi, I'm Harish Maru — a full-stack developer passionate about building sleek, scalable, and high-performance web applications with React, Node.js, MongoDB, and modern web technologies.
+
+              {/* Dynamic Typewriter Terminal Role Badge */}
+              <div className="pt-1 animate-fade-in animation-delay-200">
+                <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl glass border border-primary/40 shadow-[0_0_20px_rgba(32,178,166,0.15)] backdrop-blur-md">
+                  <div className="flex items-center gap-1.5 font-mono text-xs sm:text-sm font-semibold">
+                    <span className="text-primary font-bold">&gt;</span>
+                    <span className="text-muted-foreground/80">const role =</span>
+                    <span className="text-[#45ecd9] font-medium tracking-tight">
+                      "{displayText}"
+                    </span>
+                    <span className="w-1.5 h-3.5 bg-primary animate-pulse inline-block align-middle ml-0.5" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Bio Paragraph */}
+              <p className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed pt-1 animate-fade-in animation-delay-200">
+                Crafting scalable web applications and SaaS platforms with modern engineering standards. Dedicated to turning complex concepts into fast, maintainable, and elegant digital products.
               </p>
             </div>
 
             {/* CTAs */}
-           <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-  
-  <button onClick={() => {
-  document.querySelector("#contact")?.scrollIntoView({
-    behavior: "smooth",
-  });
-}}>
-    <Button size="lg">
-      Contact Me <ArrowRight className="w-5 h-5" />
-    </Button>
-  </button>
+            <div className="flex flex-wrap items-center gap-4 pt-1 animate-fade-in animation-delay-300">
+              <button
+                onClick={() => {
+                  document.querySelector("#contact")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+                className="cursor-pointer active:scale-95 transition-transform"
+              >
+                <Button size="lg" className="shadow-[0_0_20px_rgba(32,178,166,0.35)]">
+                  <span>Contact Me</span>
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </Button>
+              </button>
 
-  <a href="/resume.pdf" download>
-    <AnimatedBorderButton>
-      <Download className="w-5 h-5" />
-      Download CV
-    </AnimatedBorderButton>
-  </a>
-
-</div>
+              <a href="/resume.pdf" download className="active:scale-95 transition-transform">
+                <AnimatedBorderButton>
+                  <Download className="w-4 h-4 mr-1" />
+                  <span>Download CV</span>
+                </AnimatedBorderButton>
+              </a>
+            </div>
 
             {/* Social Links */}
-            <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
-              <span className="text-sm text-muted-foreground">Follow me: </span>
+            <div className="flex items-center gap-3 pt-1 animate-fade-in animation-delay-400">
+              <span className="text-xs sm:text-sm text-muted-foreground">Follow me: </span>
               {[
-                { icon: FaSquareGithub, href: "https://Github.com/harishmaru1" },
-                { icon: FaLinkedin, href: "https://www.linkedin.com/in/harish-maru-331017248?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
-                { icon: FaInstagramSquare, href: "https://Instagram.com/hri._.ish" },
+                { icon: FaSquareGithub, href: "https://Github.com/harishmaru1", label: "GitHub" },
+                {
+                  icon: FaLinkedin,
+                  href: "https://www.linkedin.com/in/harish-maru-331017248?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+                  label: "LinkedIn",
+                },
+                { icon: FaInstagramSquare, href: "https://Instagram.com/hri._.ish", label: "Instagram" },
               ].map((social, idx) => (
                 <a
                   key={idx}
                   href={social.href}
                   target="_blank"
-                  className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="p-2.5 rounded-full glass hover:bg-primary/15 hover:text-primary transition-all duration-300 hover:scale-110 active:scale-95"
                 >
-                  {<social.icon className="w-5 h-5" />}
+                  <social.icon className="w-4 h-4" />
                 </a>
               ))}
             </div>

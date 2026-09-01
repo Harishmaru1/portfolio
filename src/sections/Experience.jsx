@@ -1,22 +1,24 @@
+import { TiltCard } from "@/components/TiltCard";
+
 const experiences = [
-//   {
-//     period: "2022 — Present",
-//     role: "Senior Frontend Engineer",
-//     company: "Tech Innovators Inc.",
-//     description:
-//       "Leading frontend architecture for a suite of fintech products. Implemented micro-frontend architecture, reduced bundle size by 40%, and mentored a team of 5 developers.",
-//     technologies: ["React", "TypeScript", "Next.js", "GraphQL"],
-//     current: true,
-//   },
-//   {
-//     period: "2020 — 2022",
-//     role: "Frontend Engineer",
-//     company: "Digital Solutions Co.",
-//     description:
-//       "Built and maintained multiple React applications for enterprise clients. Introduced automated testing practices that improved code coverage to 85%.",
-//     technologies: ["React", "Redux", "Jest", "Cypress"],
-//     current: false,
-//   },
+  //   {
+  //     period: "2022 — Present",
+  //     role: "Senior Frontend Engineer",
+  //     company: "Tech Innovators Inc.",
+  //     description:
+  //       "Leading frontend architecture for a suite of fintech products. Implemented micro-frontend architecture, reduced bundle size by 40%, and mentored a team of 5 developers.",
+  //     technologies: ["React", "TypeScript", "Next.js", "GraphQL"],
+  //     current: true,
+  //   },
+  //   {
+  //     period: "2020 — 2022",
+  //     role: "Frontend Engineer",
+  //     company: "Digital Solutions Co.",
+  //     description:
+  //       "Built and maintained multiple React applications for enterprise clients. Introduced automated testing practices that improved code coverage to 85%.",
+  //     technologies: ["React", "Redux", "Jest", "Cypress"],
+  //     current: false,
+  //   },
   {
     period: "May 2026 — At present",
     role: "Full Stack Developer",
@@ -96,14 +98,15 @@ export const Experience = () => {
 
                 {/* Content */}
                 <div
-                  className={`pl-8 md:pl-0 ${
-                    idx % 2 === 0
+                  className={`pl-8 md:pl-0 ${idx % 2 === 0
                       ? "md:pr-16 md:text-right"
                       : "md:col-start-2 md:pl-16"
-                  }`}
+                    }`}
                 >
-                  <div
-                    className={`glass p-6 rounded-2xl border border-primary/30 hover:border-primary/50 transition-all duration-500`}
+                  <TiltCard
+                    maxTilt={12}
+                    scale={1.03}
+                    className="group glass p-6 rounded-2xl border border-primary/30 hover:border-primary/50 cursor-pointer"
                   >
                     <span className="text-sm text-primary font-medium">
                       {exp.period}
@@ -114,9 +117,8 @@ export const Experience = () => {
                       {exp.description}
                     </p>
                     <div
-                      className={`flex flex-wrap gap-2 mt-4 ${
-                        idx % 2 === 0 ? "md:justify-end" : ""
-                      }`}
+                      className={`flex flex-wrap gap-2 mt-4 ${idx % 2 === 0 ? "md:justify-end" : ""
+                        }`}
                     >
                       {exp.technologies.map((tech, techIdx) => (
                         <span
@@ -127,7 +129,7 @@ export const Experience = () => {
                         </span>
                       ))}
                     </div>
-                  </div>
+                  </TiltCard>
                 </div>
               </div>
             ))}

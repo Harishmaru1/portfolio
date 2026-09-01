@@ -1,4 +1,5 @@
 import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
+import { TiltCard } from "@/components/TiltCard";
 
 const highlights = [
   {
@@ -68,31 +69,47 @@ export const About = () => {
               </p>
             </div>
 
-            <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
-              <p className="text-lg font-medium italic text-foreground">
+            <TiltCard
+              maxTilt={8}
+              className="group glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300 border border-primary/30"
+            >
+              <p className="text-lg font-medium italic text-foreground relative z-10">
                 "My mission is to create digital experiences that are not just
                 functional, but truly delightful — products that users love to
                 use and developers love to maintain."
               </p>
-            </div>
+            </TiltCard>
           </div>
 
-          {/* Right Column - Hilights */}
+          {/* Right Column - Highlights */}
           <div className="grid sm:grid-cols-2 gap-6">
             {highlights.map((item, idx) => (
-              <div
+              <TiltCard
                 key={idx}
-                className="glass p-6 rounded-2xl animate-fade-in"
+                maxTilt={18}
+                scale={1.04}
+                className="group glass p-6 rounded-2xl animate-fade-in border border-border/50 hover:border-primary/50 cursor-pointer"
                 style={{ animationDelay: `${(idx + 1) * 100}ms` }}
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 hover:bg-primary/20">
-                  <item.icon className="w-6 h-6 text-primary" />
+                <div
+                  className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300"
+                  style={{ transform: "translateZ(30px)" }}
+                >
+                  <item.icon className="w-6 h-6 text-primary transition-transform duration-300" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3
+                  className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors"
+                  style={{ transform: "translateZ(20px)" }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  className="text-sm text-muted-foreground"
+                  style={{ transform: "translateZ(10px)" }}
+                >
                   {item.description}
                 </p>
-              </div>
+              </TiltCard>
             ))}
           </div>
         </div>
