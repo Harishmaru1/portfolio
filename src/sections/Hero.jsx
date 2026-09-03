@@ -3,8 +3,8 @@ import { Button } from "@/components/Button";
 import {
   ArrowRight,
   ChevronDown,
-  MessageCircle,
   Download,
+  Award,
 } from "lucide-react";
 import { FaSquareGithub } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
@@ -195,36 +195,47 @@ export const Hero = () => {
             </div>
           </div>
           {/* Right Column - Profile Image */}
-          <div className="relatice animate-fade-in animation-delay-300">
-            {/* Profile Image */}
-            <div className="relative max-w-md mx-auto">
-              <div
-                className="absolute inset-0 
-              rounded-3xl bg-gradient-to-br 
-              from-primary/30 via-transparent 
-              to-primary/10 blur-2xl animate-pulse"
-              />
-              <div className="relative glass rounded-3xl p-2 glow-border">
+          <div className="relative animate-fade-in animation-delay-300 flex justify-center items-center">
+            {/* Profile Image Container */}
+            <div className="relative w-full max-w-md mx-auto flex items-center justify-center">
+              {/* Ambient Glow Aura behind Harish */}
+              <div className="absolute w-[95%] h-[95%] rounded-full bg-gradient-to-tr from-primary/30 via-primary/10 to-transparent blur-3xl pointer-events-none -z-0 animate-pulse" />
+              <div className="absolute -inset-2 rounded-full bg-primary/10 blur-2xl pointer-events-none -z-0" />
+
+              {/* Cutout Image with seamless bottom fade into hero background */}
+              <div className="relative z-10 w-full flex justify-center">
                 <img
                   src="/harish-main.png"
                   alt="Harish Maru"
-                  className="w-full aspect-[4/5] object-cover rounded-2xl"
+                  className="w-full max-h-[520px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] drop-shadow-[0_0_35px_rgba(32,178,166,0.25)] hero-img-mask select-none pointer-events-none transition-transform duration-500 hover:scale-[1.02]"
                 />
+              </div>
 
-                {/* Floating Badge */}
-                <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-sm font-medium">
-                      Available for work
-                    </span>
-                  </div>
+              {/* Right Side Badges - Clean, compact, and aligned at the bottom right of the image */}
+              <div className="absolute -right-2 sm:-right-6 bottom-3 sm:bottom-6 z-20 flex flex-col items-end gap-2">
+                {/* Available for Work Badge */}
+                <div className="glass rounded-xl px-3 py-1.5 border border-primary/30 shadow-[0_8px_20px_rgba(0,0,0,0.5)] animate-float backdrop-blur-md flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                  </span>
+                  <span className="text-xs font-medium text-foreground tracking-wide whitespace-nowrap">
+                    Available for work
+                  </span>
                 </div>
-                {/* Stats Badge */}
-                <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
-                  <div className="text-2xl font-bold text-primary">1+</div>
-                  <div className="text-xs text-muted-foreground">
-                    Years Exp.
+
+                {/* 1+ Years Experience Badge (Compact & Sleek) */}
+                <div className="glass rounded-xl px-3 py-1.5 border border-primary/30 shadow-[0_8px_20px_rgba(0,0,0,0.5)] animate-float animation-delay-500 backdrop-blur-md flex items-center gap-2">
+                  <div className="w-5 h-5 rounded-md bg-primary/15 border border-primary/30 flex items-center justify-center text-primary shadow-[0_0_8px_rgba(32,178,166,0.3)]">
+                    <Award className="w-3 h-3 text-primary" />
+                  </div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-xs sm:text-sm font-bold bg-gradient-to-r from-primary to-[#45ecd9] bg-clip-text text-transparent font-display">
+                      1+ Years
+                    </span>
+                    <span className="text-[10px] text-muted-foreground font-medium whitespace-nowrap">
+                      Exp.
+                    </span>
                   </div>
                 </div>
               </div>

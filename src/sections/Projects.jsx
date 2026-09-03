@@ -17,7 +17,7 @@ export const Projects = () => {
   const displayProjects = filteredProjects.slice(0, 3);
 
   return (
-    <section id="projects" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="projects" className="pt-8 pb-20 md:pt-12 md:pb-28 relative overflow-hidden">
       {/* Bg glows */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
