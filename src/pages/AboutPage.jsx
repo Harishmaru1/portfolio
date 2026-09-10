@@ -1,6 +1,7 @@
-import { Code2, Lightbulb, Rocket, Users, ArrowLeft, CheckCircle2, Award, Briefcase, GraduationCap } from "lucide-react";
+import { Code2, Lightbulb, Rocket, Users, ArrowLeft, CheckCircle2, Award, Briefcase, GraduationCap } from "@/components/Icons";
 import { TiltCard } from "@/components/TiltCard";
 import { useNavigation } from "@/context/NavigationContext";
+import { SEO } from "@/components/SEO";
 
 const highlights = [
   {
@@ -45,6 +46,11 @@ export const AboutPage = () => {
 
   return (
     <div className="min-h-screen pt-28 pb-20 relative overflow-hidden">
+      <SEO
+        title="About Harish Maru | Full Stack Developer & Software Engineer in Indore"
+        description="Learn more about Harish Maru, Full Stack Developer and Software Engineer based in Indore, Madhya Pradesh, specializing in React, Node.js, PHP, MySQL, and modern web architectures."
+        canonical="https://harish-maru.netlify.app/about"
+      />
       {/* Glows */}
       <div className="absolute top-20 left-1/3 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-highlight/5 rounded-full blur-3xl -z-10" />
@@ -52,20 +58,25 @@ export const AboutPage = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Back Link */}
         <div className="mb-8">
-          <button
-            onClick={() => navigate("/")}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/");
+            }}
+            aria-label="Back to Harish Maru Portfolio Home"
             className="inline-flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Home</span>
-          </button>
+          </a>
         </div>
 
         {/* Hero Section */}
         <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
           <div className="lg:col-span-7 space-y-6">
             <span className="text-primary text-xs sm:text-sm font-semibold tracking-widest uppercase">
-              About Me
+              About Harish Maru
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight">
               Passionate about creating{" "}
@@ -73,29 +84,39 @@ export const AboutPage = () => {
             </h1>
             <div className="space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
               <p>
-                Hello! I'm <span className="text-foreground font-semibold">Harish Maru</span>, a dedicated Full Stack Developer with deep expertise in designing, building, and deploying modern web applications and SaaS products.
+                Hello! I'm <span className="text-foreground font-semibold">Harish Maru</span>, a dedicated Full Stack Developer and Software Engineer based in Indore, Madhya Pradesh, India, with deep expertise in designing, building, and deploying modern web applications and SaaS products.
               </p>
               <p>
-                Over the past several years, I have helped startups, public leaders, and growing companies transform their digital presence through responsive frontends, secure backend APIs, and scalable database architectures.
+                I help startups, businesses, and leaders elevate their digital presence through responsive frontends, secure backend APIs, and scalable database architectures using React, Node.js, PHP, and MySQL.
               </p>
               <p>
-                Whether it's an automated restaurant QR ordering system (PrimeDine), a full-scale rental management application (Alaukik Tours), or official personal portfolios, I bring high engineering standards, clean aesthetics, and performance focus to every build.
+                Whether it's an automated restaurant QR ordering system (PrimeDine), a full-scale rental management application (Alaukik Tours), or custom web applications, I bring high engineering standards, clean aesthetics, and performance focus to every build.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-4 pt-2">
-              <button
-                onClick={() => navigate("/projects")}
-                className="px-6 py-2.5 rounded-full bg-primary text-primary-foreground font-medium text-xs sm:text-sm shadow-lg hover:scale-105 transition-all cursor-pointer"
+              <a
+                href="/projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/projects");
+                }}
+                aria-label="View Full Stack Projects by Harish Maru"
+                className="px-6 py-2.5 rounded-full bg-primary text-primary-foreground font-medium text-xs sm:text-sm shadow-lg hover:scale-105 transition-all cursor-pointer inline-block"
               >
                 View My Projects
-              </button>
-              <button
-                onClick={() => navigate("/contact")}
-                className="px-6 py-2.5 rounded-full glass border border-border/70 hover:border-primary/40 hover:text-primary text-xs sm:text-sm font-medium transition-all cursor-pointer"
+              </a>
+              <a
+                href="/contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/contact");
+                }}
+                aria-label="Contact Harish Maru in Indore"
+                className="px-6 py-2.5 rounded-full glass border border-border/70 hover:border-primary/40 hover:text-primary text-xs sm:text-sm font-medium transition-all cursor-pointer inline-block"
               >
                 Let's Connect
-              </button>
+              </a>
             </div>
           </div>
 

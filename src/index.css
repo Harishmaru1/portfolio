@@ -7,13 +7,13 @@
   --color-card: #141a1f;
 
   --color-primary: #20b2a6;
-  --color-primary-foreground: #ffffff;
+  --color-primary-foreground: #041c19;
 
   --color-secondary: #1f2830;
   --color-secondary-foreground: #20b2a6;
 
   --color-muted: #252e37;
-  --color-muted-foreground: #7a8491;
+  --color-muted-foreground: #94a3b8;
 
   --color-border: #242b32;
   --radius: 0.75rem;
@@ -84,14 +84,12 @@
   @keyframes fade-in {
     from {
       opacity: 0;
-      transform: translateY(20px);
-      filter: blur(10px);
+      transform: translateY(8px);
     }
 
     to {
       opacity: 1;
       transform: translateY(0);
-      filter: blur(0);
     }
   }
 
@@ -139,7 +137,7 @@
   }
 
   .animate-fade-in {
-    animation: fade-in 0.8s ease-out both;
+    animation: fade-in 0.3s ease-out both;
   }
 
   .animate-float {

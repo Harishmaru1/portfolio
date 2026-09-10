@@ -1,0 +1,19 @@
+# Harish Maru - Portfolio & Full Stack Developer
+
+> Official website and software engineering portfolio of Harish Maru, Full Stack Developer based in Indore, Madhya Pradesh, India specializing in React, Next.js, Node.js, and modern web architectures.
+
+## Overview
+- **Name**: Harish Maru
+- **Role**: Full Stack Developer & Software Engineer
+- **Location**: Indore, Madhya Pradesh, India
+- **Email**: maruharish471@gmail.com
+- **Phone**: +91 9301980838
+
+## Core Links
+- [Home](https://harish-maru.netlify.app/)
+- [About](https://harish-maru.netlify.app/about)
+- [Projects](https://harish-maru.netlify.app/projects)
+- [Contact](https://harish-maru.netlify.app/contact)
+- [GitHub](https://github.com/harishmaru1)
+- [LinkedIn](https://www.linkedin.com/in/harish-maru-331017248)
+- [Instagram](https://instagram.com/hri._.ish)

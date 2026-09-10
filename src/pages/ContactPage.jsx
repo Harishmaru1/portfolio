@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, ArrowLeft, MessageSquare, Clock, Globe } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, ArrowLeft, MessageSquare, Clock, Globe } from "@/components/Icons";
 import { Button } from "@/components/Button";
 import { TiltCard } from "@/components/TiltCard";
 import { useNavigation } from "@/context/NavigationContext";
 import emailjs from "@emailjs/browser";
+import { SEO } from "@/components/SEO";
 
 const contactChannels = [
   {
@@ -87,6 +88,11 @@ export const ContactPage = () => {
 
   return (
     <div className="min-h-screen pt-28 pb-20 relative overflow-hidden">
+      <SEO
+        title="Contact Harish Maru | Hire Full Stack Developer in Indore"
+        description="Contact Harish Maru, Full Stack Developer and Software Engineer in Indore, Madhya Pradesh. Available for freelance web development and full-time software engineering roles."
+        canonical="https://harish-maru.netlify.app/contact"
+      />
       {/* Background Glows */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-highlight/5 rounded-full blur-3xl -z-10" />
@@ -94,13 +100,18 @@ export const ContactPage = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Back Link */}
         <div className="mb-8">
-          <button
-            onClick={() => navigate("/")}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/");
+            }}
+            aria-label="Back to Harish Maru Portfolio Home"
             className="inline-flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Home</span>
-          </button>
+          </a>
         </div>
 
         {/* Header */}
@@ -112,7 +123,7 @@ export const ContactPage = () => {
             Get In Touch &amp; Connect
           </h1>
           <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto">
-            Have a project, idea, or freelance opportunity? Fill out the form or reach out through direct channels below.
+            Have a project, idea, or freelance opportunity? Contact Harish Maru, Full Stack Developer &amp; Software Engineer based in Indore, Madhya Pradesh.
           </p>
         </div>
 
@@ -133,6 +144,7 @@ export const ContactPage = () => {
                     id="c-name"
                     type="text"
                     required
+                    autoComplete="name"
                     placeholder="e.g. John Doe"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -148,6 +160,7 @@ export const ContactPage = () => {
                     id="c-email"
                     type="email"
                     required
+                    autoComplete="email"
                     placeholder="john@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}

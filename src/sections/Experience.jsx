@@ -41,7 +41,7 @@ const experiences = [
 
 export const Experience = () => {
   return (
-    <section id="experience" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="experience" className="py-20 md:py-32 relative overflow-hidden scroll-mt-16">
       <div
         className="absolute top-1/2 left-1/4 w-96
        h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2"
@@ -72,8 +72,7 @@ export const Experience = () => {
             className="text-muted-foreground
            animate-fade-in animation-delay-200"
           >
-            A timeline of my professional growth, from curious beginner to
-            senior engineer leading teams and building products at scale.
+            A timeline of my hands-on software engineering journey, delivering production-grade SaaS platforms, REST APIs, and full-stack web applications for businesses in Indore and beyond.
           </p>
         </div>
 
@@ -123,7 +122,7 @@ export const Experience = () => {
                       {exp.technologies.map((tech, techIdx) => (
                         <span
                           key={techIdx}
-                          className="px-3 py-1 bg-surface text-xs rounded-full text-muted-foreground"
+                          className="px-3 py-1 bg-surface text-xs rounded-full text-slate-300"
                         >
                           {tech}
                         </span>

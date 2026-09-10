@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { NavigationProvider, useNavigation } from "@/context/NavigationContext";
 import { Navbar } from "@/layout/Navbar";
 import { Hero } from "@/sections/Hero";
@@ -7,9 +8,17 @@ import { Experience } from "@/sections/Experience";
 import { Testimonials } from "@/sections/Testimonials";
 import { Contact } from "@/sections/Contact";
 import { Footer } from "@/layout/Footer";
-import { ProjectsPage } from "@/pages/ProjectsPage";
-import { AboutPage } from "@/pages/AboutPage";
-import { ContactPage } from "@/pages/ContactPage";
+
+// Lazy-load sub-pages to reduce initial bundle size & defer unused JavaScript
+const ProjectsPage = lazy(() =>
+  import("@/pages/ProjectsPage").then((m) => ({ default: m.ProjectsPage }))
+);
+const AboutPage = lazy(() =>
+  import("@/pages/AboutPage").then((m) => ({ default: m.AboutPage }))
+);
+const ContactPage = lazy(() =>
+  import("@/pages/ContactPage").then((m) => ({ default: m.ContactPage }))
+);
 
 function AppContent() {
   const { currentPath } = useNavigation();
@@ -17,11 +26,23 @@ function AppContent() {
   const renderCurrentView = () => {
     switch (currentPath) {
       case "/about":
-        return <AboutPage />;
+        return (
+          <Suspense fallback={<div className="min-h-screen bg-background" />}>
+            <AboutPage />
+          </Suspense>
+        );
       case "/projects":
-        return <ProjectsPage />;
+        return (
+          <Suspense fallback={<div className="min-h-screen bg-background" />}>
+            <ProjectsPage />
+          </Suspense>
+        );
       case "/contact":
-        return <ContactPage />;
+        return (
+          <Suspense fallback={<div className="min-h-screen bg-background" />}>
+            <ContactPage />
+          </Suspense>
+        );
       case "/":
       default:
         return (

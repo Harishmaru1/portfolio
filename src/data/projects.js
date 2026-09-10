@@ -5,7 +5,8 @@ export const projects = [
     category: "Full Stack",
     description:
       "Developed a modern SaaS restaurant management and digital QR menu platform for Alaukik. Enables seamless digital menu browsing, WhatsApp table ordering, billing management, customized branding, and complete restaurant onboarding with an administrative dashboard.",
-    image: "/projects/primedine.png",
+    image: "/projects/primedine.webp",
+    alt: "PrimeDine - Smart QR Menu and Restaurant Management SaaS Platform developed by Harish Maru",
     tags: ["React.js", "Tailwind CSS", "PHP", "MySQL", "QR Ordering", "REST APIs"],
     link: "https://primedine.alaukikitechsolution.in/",
     github: "#",
@@ -17,7 +18,8 @@ export const projects = [
     category: "Full Stack",
     description:
       "Developed a full-stack Vehicle Rental and Tour Packages web application using React.js, PHP, and MySQL. Implemented secure authentication, vehicle rental management, tour package listings, booking inquiry forms, REST APIs, and a responsive user interface to deliver a seamless travel and rental experience.",
-    image: "/projects/project2.png",
+    image: "/projects/project2.webp",
+    alt: "Alaukik Tours and Travels - Vehicle Rental and Tour Booking Web Application developed by Harish Maru",
     tags: ["React.js", "Tailwind CSS", "PHP", "MySQL"],
     link: "https://one-to-one.alaukikitechsolution.in/",
     github: "#",
@@ -29,7 +31,8 @@ export const projects = [
     category: "Frontend",
     description:
       "Designed and developed a responsive official portfolio website for Mr. Sanjay Agrawal, a prominent politician, public leader, and social worker. Showcases his journey, social initiatives, public engagements, literary contributions in poetry & art, and community upliftment programs.",
-    image: "/projects/sanjay-agrawal.png",
+    image: "/projects/sanjay-agrawal.webp",
+    alt: "Mr. Sanjay Agrawal Official Responsive Portfolio Website designed and developed by Harish Maru",
     tags: ["React", "Tailwind CSS", "JavaScript", "Responsive Design"],
     link: "https://sanjay-agrawal.worldhindufederationindia.in/",
     github: "#",
@@ -41,7 +44,8 @@ export const projects = [
     category: "Frontend",
     description:
       "Built a responsive gaming website for a client using HTML, CSS, JavaScript, and React, showcasing strong front-end development and interactive UI design skills with dynamic tournament listings.",
-    image: "/projects/project1.png",
+    image: "/projects/project1.webp",
+    alt: "Dailymatch.in - Responsive Gaming and Tournament Web Application built by Harish Maru",
     tags: ["React", "JavaScript", "NodeJS", "UI/UX"],
     link: "https://www.dailymatch.in/",
     github: "#",

@@ -60,8 +60,8 @@ export const TiltCard = ({
       onMouseLeave={handleMouseLeave}
       className={`relative transition-all duration-300 ${className}`}
       style={{
-        transform,
-        transformStyle: "preserve-3d",
+        transform: isHovered ? transform : undefined,
+        transformStyle: isHovered ? "preserve-3d" : undefined,
         transition: isHovered
           ? "transform 0.1s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out"
           : "transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease-out, border-color 0.5s ease-out",

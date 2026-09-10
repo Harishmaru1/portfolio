@@ -1,24 +1,22 @@
-import { FaInstagramSquare } from "react-icons/fa";
-import { FaSquareGithub } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa";
-import { ArrowRight, Eye } from "lucide-react";
+import { ArrowRight, Eye } from "@/components/Icons";
 import { useNavigation } from "@/context/NavigationContext";
+import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/SocialIcons";
 
 const socialLinks = [
   {
-    icon: FaSquareGithub,
+    icon: GithubIcon,
     href: "https://github.com/harishmaru1",
-    label: "FaSquareGithub",
+    label: "Visit Harish Maru GitHub profile",
   },
   {
-    icon: FaLinkedin,
+    icon: LinkedinIcon,
     href: "https://www.linkedin.com/in/harish-maru-331017248",
-    label: "FaLinkedin",
+    label: "Visit Harish Maru LinkedIn profile",
   },
   {
-    icon: FaInstagramSquare,
+    icon: InstagramIcon,
     href: "https://instagram.com/hri._.ish",
-    label: "FaInstagramSquare",
+    label: "Visit Harish Maru Instagram profile",
   },
 ];
 
@@ -34,7 +32,7 @@ export const Footer = () => {
   const { navigate } = useNavigation();
 
   return (
-    <footer className="relative border-t border-border/50 py-10 md:py-14 overflow-hidden bg-background/80">
+    <footer className="relative border-t border-border/50 py-10 md:py-14 overflow-hidden bg-background/80" aria-label="Footer">
       {/* Background Glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute left-1/4 top-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
@@ -46,8 +44,13 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
           {/* Logo & Bio */}
           <div className="text-center md:text-left max-w-sm">
-            <button
-              onClick={() => navigate("/")}
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/");
+              }}
+              aria-label="Harish Maru - Full Stack Developer in Indore"
               className="flex items-center text-2xl font-extrabold tracking-tight cursor-pointer group inline-block"
             >
               <span className="text-foreground transition-colors group-hover:text-white">
@@ -56,23 +59,26 @@ export const Footer = () => {
               <span className="text-primary glow-text font-mono font-bold text-xl transition-all group-hover:translate-x-0.5">
                 .tech
               </span>
-            </button>
+            </a>
             <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
-              Full Stack Developer passionate about creating modern,
-              scalable, and high-performance web experiences.
+              Full Stack Developer &amp; Software Engineer based in Indore, Madhya Pradesh. Crafting scalable web applications and SaaS platforms.
             </p>
           </div>
 
           {/* Navigation Links (Single Straight Line) */}
-          <nav className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 whitespace-nowrap">
+          <nav className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 whitespace-nowrap" aria-label="Footer Links">
             {footerLinks.map((link) => (
-              <button
+              <a
                 key={link.label}
-                onClick={() => navigate(link.path)}
+                href={link.path}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(link.path);
+                }}
                 className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer"
               >
                 {link.label}
-              </button>
+              </a>
             ))}
           </nav>
 
@@ -96,28 +102,38 @@ export const Footer = () => {
         {/* Bottom Line with Copyright & Action Buttons */}
         <div className="mt-8 pt-6 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground text-center sm:text-left">
-            © {currentYear} Harish Maru. All rights reserved.
+            © {currentYear} Harish Maru. Full Stack Developer &amp; Software Engineer, Indore. All rights reserved.
           </p>
 
           {/* Compact Symmetric Action Buttons */}
           <div className="flex items-center gap-2.5">
             {/* View Projects Button */}
-            <button
-              onClick={() => navigate("/projects")}
+            <a
+              href="/projects"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/projects");
+              }}
+              aria-label="View Full Stack Projects"
               className="px-3.5 py-1.5 rounded-full glass border border-border/70 hover:border-primary/40 hover:text-primary text-xs font-medium transition-all duration-300 flex items-center gap-1.5 cursor-pointer active:scale-95"
             >
               <Eye className="w-3.5 h-3.5" />
               <span>View Projects</span>
-            </button>
+            </a>
 
             {/* Let's Connect Button */}
-            <button
-              onClick={() => navigate("/contact")}
+            <a
+              href="/contact"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/contact");
+              }}
+              aria-label="Contact Harish Maru in Indore"
               className="px-3.5 py-1.5 rounded-full bg-primary text-primary-foreground font-medium text-xs shadow-[0_0_15px_rgba(32,178,166,0.35)] hover:shadow-[0_0_25px_rgba(32,178,166,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-1.5 cursor-pointer group"
             >
               <span>Let's Connect</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </button>
+            </a>
           </div>
         </div>
       </div>

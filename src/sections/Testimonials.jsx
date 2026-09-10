@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, Quote, User } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, User } from "@/components/Icons";
 import { useState } from "react";
 import { TiltCard } from "@/components/TiltCard";
 
@@ -42,7 +42,7 @@ export const Testimonials = () => {
     );
   };
   return (
-    <section id="testimonials" className="py-16 md:py-24 relative overflow-hidden">
+    <section id="testimonials" className="py-16 md:py-24 relative overflow-hidden scroll-mt-16">
       <div
         className="absolute top-1/2 left-1/2
        w-[800px] h-[800px] bg-primary/5
@@ -115,29 +115,38 @@ export const Testimonials = () => {
             {/* Testimonials Navigation */}
             <div className="flex items-center justify-center gap-4 mt-8">
               <button
-                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
+                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all cursor-pointer"
                 onClick={previous}
+                aria-label="Previous testimonial"
               >
-                <ChevronLeft />
+                <ChevronLeft className="w-5 h-5" />
               </button>
 
-              <div className="flex gap-2">
+              <div className="flex items-center gap-1">
                 {testimonials.map((_, idx) => (
                   <button
+                    key={idx}
                     onClick={() => setActiveIdx(idx)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === activeIdx
-                        ? "w-8 bg-primary"
-                        : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                    aria-label={`Go to testimonial ${idx + 1}`}
+                    className="p-2.5 flex items-center justify-center cursor-pointer"
+                  >
+                    <span
+                      className={`h-2 rounded-full transition-all duration-300 block ${
+                        idx === activeIdx
+                          ? "w-8 bg-primary"
+                          : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/60"
                       }`}
-                  />
+                    />
+                  </button>
                 ))}
               </div>
 
               <button
+                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all cursor-pointer"
                 onClick={next}
-                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
+                aria-label="Next testimonial"
               >
-                <ChevronRight />
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           </div>

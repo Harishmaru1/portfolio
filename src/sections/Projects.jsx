@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, ExternalLink, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink, ArrowRight } from "@/components/Icons";
 import { TiltCard } from "@/components/TiltCard";
 import { projects } from "@/data/projects";
 import { useNavigation } from "@/context/NavigationContext";
@@ -72,7 +72,7 @@ export const Projects = () => {
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
                   </div>
-                  <div className="text-[10px] text-muted-foreground/70 font-mono truncate px-2.5 py-0.5 rounded-full bg-background/50 border border-border/20 max-w-[170px]">
+                  <div className="text-[10px] text-slate-300 font-mono truncate px-2.5 py-0.5 rounded-full bg-background/50 border border-border/20 max-w-[170px]">
                     {project.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}
                   </div>
                   <div className="w-6" />
@@ -82,9 +82,12 @@ export const Projects = () => {
                 <div className="relative aspect-[16/10] w-full bg-[#070a10] flex items-center justify-center p-1.5">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={project.alt || `${project.title} - Full stack project developed by Harish Maru`}
+                    width="480"
+                    height="300"
                     className="w-full h-full object-contain object-center rounded-sm transition-transform duration-500 group-hover:scale-[1.02]"
                     loading="lazy"
+                    decoding="async"
                   />
                   
                   {/* Hover Overlay */}
@@ -93,6 +96,7 @@ export const Projects = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Visit live website of ${project.title}`}
                       className="px-4 py-2 rounded-full bg-primary text-primary-foreground shadow-lg hover:scale-105 transition-all flex items-center gap-2 font-medium text-xs"
                     >
                       <span>Live Demo</span>
@@ -114,6 +118,7 @@ export const Projects = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Learn more about ${project.title}`}
                     className="block group-hover:text-primary transition-colors cursor-pointer"
                   >
                     <h3 className="text-base sm:text-lg font-semibold line-clamp-1">
@@ -132,7 +137,7 @@ export const Projects = () => {
                     {project.tags.slice(0, 4).map((tag, tagIdx) => (
                       <span
                         key={tagIdx}
-                        className="px-2.5 py-0.5 rounded-md bg-surface text-[11px] font-medium border border-border/50 text-muted-foreground"
+                        className="px-2.5 py-0.5 rounded-md bg-surface text-[11px] font-medium border border-border/50 text-slate-300"
                       >
                         {tag}
                       </span>
@@ -144,6 +149,7 @@ export const Projects = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Open live demonstration for ${project.title}`}
                     className="w-full py-2 rounded-xl bg-gradient-to-r from-primary/80 to-primary text-primary-foreground font-medium text-xs flex items-center justify-center gap-2 shadow-md hover:shadow-primary/30 hover:opacity-95 transition-all cursor-pointer"
                   >
                     <span>Live Demo</span>
@@ -155,15 +161,20 @@ export const Projects = () => {
           ))}
         </div>
 
-        {/* Show More Button -> Redirects to /projects page */}
+        {/* Show More Button -> Redirects to /projects page with crawlable <a> link */}
         <div className="text-center mt-12 sm:mt-16 animate-fade-in">
-          <button
-            onClick={() => navigate("/projects")}
+          <a
+            href="/projects"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/projects");
+            }}
+            aria-label="Explore all full stack web development projects by Harish Maru"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_25px_rgba(32,178,166,0.4)] border border-primary/30 text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer group active:scale-95"
           >
             <span>Show More Projects</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </a>
         </div>
       </div>
     </section>

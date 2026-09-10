@@ -1,4 +1,4 @@
-import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
+import { Code2, Lightbulb, Rocket, Users } from "@/components/Icons";
 import { TiltCard } from "@/components/TiltCard";
 
 const highlights = [
@@ -50,22 +50,13 @@ export const About = () => {
 
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
               <p>
-                I'm a passionate software engineer with over 5 years of
-                experience crafting digital products that make a difference. My
-                journey started with a curiosity for how things work on the web,
-                and it has evolved into a deep expertise in modern frontend
-                technologies.
+                I'm <span className="text-foreground font-semibold">Harish Maru</span>, a passionate Full Stack Developer and Software Engineer based in Indore, Madhya Pradesh, India. I specialize in building modern, scalable web applications and SaaS platforms that solve real business problems.
               </p>
               <p>
-                I specialize in React, Next.js, and TypeScript, building
-                everything from sleek landing pages to complex enterprise
-                applications. My approach combines technical excellence with a
-                keen eye for design and user experience.
+                My core expertise spans frontend and backend engineering with React, JavaScript, Node.js, Express, PHP, MySQL, and MongoDB. From architecting QR menu SaaS solutions to developing full-stack booking portals and responsive enterprise portfolios, I emphasize clean code, robust REST APIs, and high Core Web Vitals performance.
               </p>
               <p>
-                When I'm not coding, you'll find me exploring new technologies,
-                contributing to open-source projects, or sharing knowledge with
-                the developer community.
+                Whether collaborating as a freelance developer in Indore or working with cross-functional engineering teams, I focus on delivering reliable software solutions with delightful user experiences.
               </p>
             </div>
 

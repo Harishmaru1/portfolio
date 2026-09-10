@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { ArrowUpRight, ExternalLink, ArrowLeft, Search, Sparkles } from "lucide-react";
+import { ArrowUpRight, ExternalLink, ArrowLeft, Search, Sparkles } from "@/components/Icons";
 import { TiltCard } from "@/components/TiltCard";
 import { projects } from "@/data/projects";
 import { useNavigation } from "@/context/NavigationContext";
+import { SEO } from "@/components/SEO";
 
 export const ProjectsPage = () => {
   const { navigate } = useNavigation();
@@ -23,6 +24,11 @@ export const ProjectsPage = () => {
 
   return (
     <div className="min-h-screen pt-28 pb-20 relative overflow-hidden">
+      <SEO
+        title="Projects &amp; Portfolio | Harish Maru - Full Stack Web Applications"
+        description="Browse full-stack web applications, SaaS platforms, and responsive client websites developed by Harish Maru in Indore, featuring React, PHP, MySQL, and REST APIs."
+        canonical="https://harish-maru.netlify.app/projects"
+      />
       {/* Background Glows */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-highlight/5 rounded-full blur-3xl -z-10" />
@@ -30,13 +36,18 @@ export const ProjectsPage = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back button */}
         <div className="mb-8">
-          <button
-            onClick={() => navigate("/")}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/");
+            }}
+            aria-label="Back to Harish Maru Portfolio Home"
             className="inline-flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Home</span>
-          </button>
+          </a>
         </div>
 
         {/* Header */}
@@ -49,7 +60,7 @@ export const ProjectsPage = () => {
             All Projects &amp; Creations
           </h1>
           <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto">
-            Explore my full collection of production web applications, SaaS platforms, and client portfolios built with modern frameworks.
+            Explore my full collection of production web applications, SaaS platforms, and client portfolios built with modern frameworks by Harish Maru in Indore.
           </p>
         </div>
 
@@ -103,7 +114,7 @@ export const ProjectsPage = () => {
                       <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
                       <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
                     </div>
-                    <div className="text-[10px] text-muted-foreground/70 font-mono truncate px-2.5 py-0.5 rounded-full bg-background/50 border border-border/20 max-w-[170px]">
+                    <div className="text-[10px] text-slate-300 font-mono truncate px-2.5 py-0.5 rounded-full bg-background/50 border border-border/20 max-w-[170px]">
                       {project.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}
                     </div>
                     <div className="w-6" />
@@ -112,9 +123,12 @@ export const ProjectsPage = () => {
                   <div className="relative aspect-[16/10] w-full bg-[#070a10] flex items-center justify-center p-2">
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt={project.alt || `${project.title} - Web application developed by Harish Maru`}
+                      width="480"
+                      height="300"
                       className="w-full h-full object-contain object-center rounded-sm transition-transform duration-500 group-hover:scale-[1.02]"
                       loading="lazy"
+                      decoding="async"
                     />
                     
                     <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px] flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
@@ -122,6 +136,7 @@ export const ProjectsPage = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`Visit live website of ${project.title}`}
                         className="px-4 py-2 rounded-full bg-primary text-primary-foreground shadow-lg hover:scale-105 transition-all flex items-center gap-2 font-medium text-xs"
                       >
                         <span>Live Demo</span>
@@ -159,7 +174,7 @@ export const ProjectsPage = () => {
                       {project.tags.map((tag, tagIdx) => (
                         <span
                           key={tagIdx}
-                          className="px-2.5 py-0.5 rounded-md bg-surface text-[11px] font-medium border border-border/50 text-muted-foreground"
+                          className="px-2.5 py-0.5 rounded-md bg-surface text-[11px] font-medium border border-border/50 text-slate-300"
                         >
                           {tag}
                         </span>

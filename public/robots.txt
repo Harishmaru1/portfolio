@@ -1,0 +1,12 @@
+# robots.txt for Harish Maru Portfolio
+# https://harish-maru.netlify.app/
+
+User-agent: *
+Allow: /
+
+# Disallow private and administrative assets
+Disallow: /dist/
+Disallow: /node_modules/
+
+# Sitemaps
+Sitemap: https://harish-maru.netlify.app/sitemap.xml
